@@ -1,0 +1,268 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Хранилище BettyCsgoDb" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="csgo_bets">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="date" Type="datetime" Nullable="false" />
+          <Property Name="first_team_id" Type="int" Nullable="false" />
+          <Property Name="second_team_id" Type="int" Nullable="false" />
+          <Property Name="winner_team_id" Type="int" Nullable="false" />
+          <Property Name="chance" Type="float" Nullable="false" />
+          <Property Name="is_true" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="csgo_match">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="first_team_id" Type="int" Nullable="false" />
+          <Property Name="second_team_id" Type="int" Nullable="false" />
+          <Property Name="first_score" Type="int" Nullable="false" />
+          <Property Name="second_score" Type="int" Nullable="false" />
+          <Property Name="map" Type="varchar(max)" Nullable="false" />
+          <Property Name="date" Type="datetime" Nullable="false" />
+          <Property Name="url" Type="text" Nullable="false" />
+          <Property Name="first_points" Type="int" />
+          <Property Name="second_points" Type="int" />
+        </EntityType>
+        <EntityType Name="csgo_parser_details">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="url" Type="varchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="csgo_player">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar(max)" Nullable="false" />
+          <Property Name="kills" Type="int" Nullable="false" />
+          <Property Name="deaths" Type="int" Nullable="false" />
+          <Property Name="maps" Type="int" Nullable="false" />
+          <Property Name="rounds" Type="int" Nullable="false" />
+          <Property Name="team" Type="varchar(max)" Nullable="false" />
+          <Property Name="url" Type="varchar(max)" Nullable="false" />
+          <Property Name="points" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="csgo_team">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="url" Type="varchar(max)" Nullable="false" />
+          <Property Name="logo_url" Type="varchar(max)" Nullable="false" />
+          <Property Name="points" Type="int" Nullable="false" />
+          <Property Name="name" Type="varchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityContainer Name="Хранилище BettyCsgoDbContainer">
+          <EntitySet Name="csgo_bets" EntityType="Self.csgo_bets" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="csgo_match" EntityType="Self.csgo_match" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="csgo_parser_details" EntityType="Self.csgo_parser_details" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="csgo_player" EntityType="Self.csgo_player" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="csgo_team" EntityType="Self.csgo_team" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="BettyCsgoDb" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="CsgoBets">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="FirstTeamId" Type="Int32" Nullable="false" />
+          <Property Name="SecondTeamId" Type="Int32" Nullable="false" />
+          <Property Name="WinnerTeamId" Type="Int32" Nullable="false" />
+          <Property Name="Chance" Type="Double" Nullable="false" />
+          <Property Name="IsTrue" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CsgoMatch">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstTeamId" Type="Int32" Nullable="false" />
+          <Property Name="SecondTeamId" Type="Int32" Nullable="false" />
+          <Property Name="FirstScore" Type="Int32" Nullable="false" />
+          <Property Name="SecondScore" Type="Int32" Nullable="false" />
+          <Property Name="Map" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Url" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="FirstPoints" Type="Int32" />
+          <Property Name="SecondPoints" Type="Int32" />
+        </EntityType>
+        <EntityType Name="CsgoParserDetails">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Url" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CsgoPlayer">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Kills" Type="Int32" Nullable="false" />
+          <Property Name="Deaths" Type="Int32" Nullable="false" />
+          <Property Name="Maps" Type="Int32" Nullable="false" />
+          <Property Name="Rounds" Type="Int32" Nullable="false" />
+          <Property Name="Team" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Url" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Points" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CsgoTeam">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Url" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="LogoUrl" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Points" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityContainer Name="BettyContextCsgo" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="csgo_bets" EntityType="BettyCsgoDb.CsgoBets" />
+          <EntitySet Name="csgo_match" EntityType="BettyCsgoDb.CsgoMatch" />
+          <EntitySet Name="csgo_parser_details" EntityType="BettyCsgoDb.CsgoParserDetails" />
+          <EntitySet Name="csgo_player" EntityType="BettyCsgoDb.CsgoPlayer" />
+          <EntitySet Name="csgo_team" EntityType="BettyCsgoDb.CsgoTeam" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище BettyCsgoDbContainer" CdmEntityContainer="BettyContextCsgo">
+          <EntitySetMapping Name="csgo_bets">
+            <EntityTypeMapping TypeName="BettyCsgoDb.CsgoBets">
+              <MappingFragment StoreEntitySet="csgo_bets">
+                <ScalarProperty Name="Id" ColumnName="id" />
+                <ScalarProperty Name="Date" ColumnName="date" />
+                <ScalarProperty Name="FirstTeamId" ColumnName="first_team_id" />
+                <ScalarProperty Name="SecondTeamId" ColumnName="second_team_id" />
+                <ScalarProperty Name="WinnerTeamId" ColumnName="winner_team_id" />
+                <ScalarProperty Name="Chance" ColumnName="chance" />
+                <ScalarProperty Name="IsTrue" ColumnName="is_true" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="csgo_match">
+            <EntityTypeMapping TypeName="BettyCsgoDb.CsgoMatch">
+              <MappingFragment StoreEntitySet="csgo_match">
+                <ScalarProperty Name="Id" ColumnName="id" />
+                <ScalarProperty Name="FirstTeamId" ColumnName="first_team_id" />
+                <ScalarProperty Name="SecondTeamId" ColumnName="second_team_id" />
+                <ScalarProperty Name="FirstScore" ColumnName="first_score" />
+                <ScalarProperty Name="SecondScore" ColumnName="second_score" />
+                <ScalarProperty Name="Map" ColumnName="map" />
+                <ScalarProperty Name="Date" ColumnName="date" />
+                <ScalarProperty Name="Url" ColumnName="url" />
+                <ScalarProperty Name="FirstPoints" ColumnName="first_points" />
+                <ScalarProperty Name="SecondPoints" ColumnName="second_points" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="csgo_parser_details">
+            <EntityTypeMapping TypeName="BettyCsgoDb.CsgoParserDetails">
+              <MappingFragment StoreEntitySet="csgo_parser_details">
+                <ScalarProperty Name="Id" ColumnName="id" />
+                <ScalarProperty Name="Url" ColumnName="url" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="csgo_player">
+            <EntityTypeMapping TypeName="BettyCsgoDb.CsgoPlayer">
+              <MappingFragment StoreEntitySet="csgo_player">
+                <ScalarProperty Name="Id" ColumnName="id" />
+                <ScalarProperty Name="Name" ColumnName="name" />
+                <ScalarProperty Name="Kills" ColumnName="kills" />
+                <ScalarProperty Name="Deaths" ColumnName="deaths" />
+                <ScalarProperty Name="Maps" ColumnName="maps" />
+                <ScalarProperty Name="Rounds" ColumnName="rounds" />
+                <ScalarProperty Name="Team" ColumnName="team" />
+                <ScalarProperty Name="Url" ColumnName="url" />
+                <ScalarProperty Name="Points" ColumnName="points" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="csgo_team">
+            <EntityTypeMapping TypeName="BettyCsgoDb.CsgoTeam">
+              <MappingFragment StoreEntitySet="csgo_team">
+                <ScalarProperty Name="Id" ColumnName="id" />
+                <ScalarProperty Name="Url" ColumnName="url" />
+                <ScalarProperty Name="LogoUrl" ColumnName="logo_url" />
+                <ScalarProperty Name="Points" ColumnName="points" />
+                <ScalarProperty Name="Name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="BettyCsgoDb.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
